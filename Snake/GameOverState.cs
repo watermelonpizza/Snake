@@ -6,22 +6,23 @@ using Microsoft.SPOT.Presentation.Media;
 
 namespace Snake
 {
-    public class MainMenuScreen : State
+    public class GameOverState : State
     {
-        private static MainMenuScreen instance = new MainMenuScreen();
-        public static MainMenuScreen Instance { get { return instance; } }
+        private static GameOverState instance = new GameOverState();
+        public static GameOverState Instance { get { return instance; } }
 
         public override void Init() { }
 
         public override void ButtonEvent(Buttons button, InterruptPort port, ButtonDirection direction, DateTime time)
         {
             if ((ButtonDirection)Program.ButtonStates[Buttons.MiddleRight] == ButtonDirection.Down)
-                Program.StateManager.ChangeState(PlayState.Instance);
+                Program.StateManager.ChangeState(MainMenuState.Instance);
         }
 
         public override void TickEvent(object state)
         {
-            Program.Display.DrawText("MainMenu", Program.fontNinaB, Color.White, 50, 50);
+            Program.Display.DrawText("Game Over", Program.fontNinaB, Color.White, 10, 10);
+            Program.Display.DrawText("Score: " + GameData.snakedata.size.ToString(), Program.fontNinaB, Color.White, 10, 30);
         }
     }
 }

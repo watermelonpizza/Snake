@@ -13,14 +13,17 @@ namespace Snake
 
         public override void Init()
         {
-            currentState = MainMenuScreen.Instance;
+            currentState = MainMenuState.Instance;
 
             // Event setup
             ButtonHelper.Current.OnButtonPress += ButtonEvent;
-            Program.GameTick = new Timer(TickEvent, null, new TimeSpan(0, 0, 1), new TimeSpan(0, 0, 0, 0, 500));
+            Program.GameTick = new Timer(TickEvent, null, new TimeSpan(0, 0, 0, 0, 10), new TimeSpan(0, 0, 0, 0, Program.TICK_INTERVAL));
 
             currentState.Init();
             base.Init();
+
+            Queue q = new Queue();
+
         }
 
         public void ChangeState(State toState)

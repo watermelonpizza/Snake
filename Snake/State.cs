@@ -8,23 +8,23 @@ namespace Snake
 {
     public class State
     {
-        private bool tickVisualiser;
+        private bool tickvisualiser;
 
-        public virtual void Init() 
+        public virtual void Init()
         {
-            tickVisualiser = true;
+            tickvisualiser = true;
         }
 
         public virtual void ButtonEvent(Buttons button, InterruptPort port, ButtonDirection direction, DateTime time) { }
 
         public virtual void TickEvent(object state)
         {
-            if (tickVisualiser)
+            if (tickvisualiser)
                 Program.Display.DrawLine(Color.White, 1, 126, 0, 127, 1);
             else
                 Program.Display.DrawLine(Color.White, 1, 126, 1, 127, 0);
 
-            tickVisualiser = !tickVisualiser;
+            tickvisualiser = !tickvisualiser;
 
             Program.Display.Flush();
         }

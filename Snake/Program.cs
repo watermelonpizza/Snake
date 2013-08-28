@@ -11,9 +11,11 @@ namespace Snake
 {
     public class Program
     {
+        public const int TICK_INTERVAL = 250;
+
         private static Bitmap display;
-        private static StateManager stateManager;
-        public static StateManager StateManager { get { return stateManager; } }
+        private static StateManager statemanager;
+        public static StateManager StateManager { get { return statemanager; } }
         public static Bitmap Display { get { return display; } }
         public static Timer GameTick { get; set; }
         public static Hashtable ButtonStates { get; set; }
@@ -24,7 +26,7 @@ namespace Snake
         {
             Initialise();
 
-            stateManager.Init();
+            statemanager.Init();
 
             // go to sleep; all further code should be timer-driven or event-driven
             Thread.Sleep(Timeout.Infinite);
@@ -38,7 +40,7 @@ namespace Snake
             ButtonStates.Add(Buttons.BottomRight, ButtonDirection.Up);
             ButtonHelper.ButtonSetup = new Buttons[] { Buttons.TopRight, Buttons.MiddleRight, Buttons.BottomRight };
 
-            stateManager = new Snake.StateManager();
+            statemanager = new Snake.StateManager();
 
             // initialize display buffer
             display = new Bitmap(Bitmap.MaxWidth, Bitmap.MaxHeight);

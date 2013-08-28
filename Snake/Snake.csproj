@@ -33,7 +33,8 @@
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
     <Compile Include="GameData.cs" />
-    <Compile Include="MainMenuScreen.cs" />
+    <Compile Include="GameOverState.cs" />
+    <Compile Include="MainMenuState.cs" />
     <Compile Include="PlayState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
